@@ -1,0 +1,9 @@
+branch-defaults:
+  default:
+    environment: stablecoin-monitor-env
+global:
+  application_name: stablecoin-transaction-monitor
+  default_platform: Python 3.8
+  default_region: us-east-1
+
+  
