@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Stablecoin Transaction Dashboard</h1>
+    <p>Total Volume (24h): {{ total_volume }}</p>
+    <p>Fraudulent Transactions: {{ fraud_count }}</p>
+    <table border="1">
+        <tr>
+            <th>Tx Hash</th>
+            <th>Amount</th>
+            <th>Sender</th>
+            <th>Receiver</th>
+            <th>Timestamp</th>
+            <th>Fraud</th>
+        </tr>
+        {% for tx in transactions %}
+        <tr>
+            <td>{{ tx.tx_hash }}</td>
+            <td>{{ tx.amount }}</td>
+            <td>{{ tx.sender }}</td>
+            <td>{{ tx.receiver }}</td>
+            <td>{{ tx.timestamp }}</td>
+            <td>{{ 'Yes' if tx.is_fraud else 'No' }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
