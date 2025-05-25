@@ -6,12 +6,13 @@ from app.routes import fetch_transactions
 app = create_app()
 
 def monitor_transactions():
-    while True:
-        try:
-            fetch_transactions()
-        except Exception as e:
-            print(f"Error fetching transactions: {e}")
-        time.sleep(60)  # Wait for 1 minute before next fetch
+    with app.app_context():
+        while True:
+            try:
+                fetch_transactions()
+            except Exception as e:
+                print(f"Error fetching transactions: {e}")
+            time.sleep(60)  # Wait for 1 minute before next fetch
 
 if __name__ == '__main__':
     # Start transaction monitoring in a separate thread
@@ -19,4 +20,4 @@ if __name__ == '__main__':
     monitor_thread.start()
     
     # Start Flask application
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5006, debug=True)
